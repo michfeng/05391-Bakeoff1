@@ -131,11 +131,33 @@ void drawButton(int i)
   Rectangle bounds = getButtonLocation(i);
 
   if (trials.get(trialNum) == i) // see if current button is the target
-    fill(0, 255, 255); // if so, fill cyan
+  {
+    // if we are hovering
+    if (overButton(i))
+      fill(0, 255, 255, 0.6);
+    else
+      fill(0, 255, 255); // if so, fill cyan
+  }
   else
-    fill(200); // if not, fill gray
-
+  {
+    // if we are hovering
+    if (overButton(i))
+      fill(200,0.6);
+    else
+      fill(200); // if not, fill gray
+  }
+  
   rect(bounds.x, bounds.y, bounds.width, bounds.height); //draw button
+}
+
+// Check if we are hovering over button
+boolean overButton(int i) {
+  Rectangle bounds = getButtonLocation(i);
+  
+  if ((mouseX > bounds.x && mouseX < bounds.x + bounds.width) && (mouseY > bounds.y && mouseY < bounds.y + bounds.height))
+    return true
+  else
+    return false
 }
 
 void mouseMoved()
