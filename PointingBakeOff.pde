@@ -82,6 +82,10 @@ void draw()
 
   fill(255, 0, 0, 200); // set fill color to translucent red
   // MAKE CURSOR HERE
+  if (overAnyButton())
+    cursor(HAND);
+  else
+    cursor(ARROW);
   //ellipse(mouseX, mouseY, 10, 10); //draw user cursor as a circle with a diameter of 20
 }
 
@@ -157,10 +161,19 @@ void drawButton(int i)
 boolean overButton(int i) {
   Rectangle bounds = getButtonLocation(i);
   
-  if ((mouseX > bounds.x-25 && mouseX < bounds.x + bounds.width + 25) && (mouseY > bounds.y - 25 && mouseY < bounds.y + bounds.height + 25))
+  if ((mouseX > bounds.x-25 && mouseX < bounds.x + bounds.width + 25) && (mouseY > bounds.y - 25 && mouseY < bounds.y + bounds.height + 25)) {
     return true;
-  else
+  }
+  else {
     return false;
+  }
+}
+
+boolean overAnyButton() {
+  for (int i = 0; i < 16; i++) {
+    if (overButton(i)) return true;
+  }
+  return false;
 }
 
 void mouseMoved()
