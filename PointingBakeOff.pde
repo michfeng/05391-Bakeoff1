@@ -1,3 +1,5 @@
+int gstep = 25;
+
 import java.awt.AWTException;
 import java.awt.Rectangle;
 import java.awt.Robot;
@@ -23,7 +25,7 @@ int numRepeats = 1; //sets the number of times each button repeats in the test
 void setup()
 {
   size(700, 700); // set the size of the window
-  //noCursor(); //hides the system cursor if you want
+  noCursor(); //hides the system cursor if you want
   noStroke(); //turn off all strokes, we're just using fills here (can change this if you want)
   textFont(createFont("Arial", 16)); //sets the font to Arial size 16
   textAlign(CENTER);
@@ -79,7 +81,7 @@ void draw()
     drawButton(i); //draw button
 
   fill(255, 0, 0, 200); // set fill color to translucent red
-  ellipse(mouseX, mouseY, 20, 20); //draw user cursor as a circle with a diameter of 20
+  //ellipse(mouseX, mouseY, 10, 10); //draw user cursor as a circle with a diameter of 20
 }
 
 void mousePressed() // test to see if hit was in target!
@@ -134,7 +136,7 @@ void drawButton(int i)
   {
     // if we are hovering
     if (overButton(i))
-      fill(0, 255, 255, 0.6);
+      fill(0, 255, 255, 98);
     else
       fill(0, 255, 255); // if so, fill cyan
   }
@@ -142,7 +144,7 @@ void drawButton(int i)
   {
     // if we are hovering
     if (overButton(i))
-      fill(200,0.6);
+      fill(200,98);
     else
       fill(200); // if not, fill gray
   }
@@ -154,10 +156,10 @@ void drawButton(int i)
 boolean overButton(int i) {
   Rectangle bounds = getButtonLocation(i);
   
-  if ((mouseX > bounds.x && mouseX < bounds.x + bounds.width) && (mouseY > bounds.y && mouseY < bounds.y + bounds.height))
-    return true
+  if ((mouseX > bounds.x-25 && mouseX < bounds.x + bounds.width + 25) && (mouseY > bounds.y - 25 && mouseY < bounds.y + bounds.height + 25))
+    return true;
   else
-    return false
+    return false;
 }
 
 void mouseMoved()
