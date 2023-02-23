@@ -81,6 +81,7 @@ void draw()
     drawButton(i); //draw button
 
   fill(255, 0, 0, 200); // set fill color to translucent red
+  // MAKE CURSOR HERE
   //ellipse(mouseX, mouseY, 10, 10); //draw user cursor as a circle with a diameter of 20
 }
 
@@ -102,7 +103,7 @@ void mousePressed() // test to see if hit was in target!
   Rectangle bounds = getButtonLocation(trials.get(trialNum));
 
  //check to see if mouse cursor is inside button 
-  if ((mouseX > bounds.x && mouseX < bounds.x + bounds.width) && (mouseY > bounds.y && mouseY < bounds.y + bounds.height)) // test to see if hit was within bounds
+  if ((mouseX > bounds.x - 25 && mouseX < bounds.x + 25 + bounds.width) && (mouseY > bounds.y - 25 && mouseY < bounds.y + 25 + bounds.height)) // test to see if hit was within bounds
   {
     System.out.println("HIT! " + trialNum + " " + (millis() - startTime)); // success
     hits++; 
