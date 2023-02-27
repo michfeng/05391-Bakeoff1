@@ -139,24 +139,35 @@ void drawButton(int i)
 
   if (trials.get(trialNum) == i) // see if current button is the target
   {
+    noStroke();
     // if we are hovering
-    if (overButton(i))
-      fill(0, 255, 255, 98);
-    else
-      fill(0, 255, 255); // if so, fill cyan
-  } else if (trialNum < trials.size()- 1 && trials.get(trialNum + 1) == i) {
-    if (overButton(i))
-      fill(0, 0, 0, 98);
-    else
-      fill(0, 0, 0); // if so, fill cyan 
+    if (overButton(i)) {
+      fill(255, 0, 0, 98);
+    }
+    else {
+      fill(255, 0, 0); // if so, fill cyan
+    }
+  }
+  else if (trialNum+1 < trials.size() && trials.get(trialNum+1) == i) {
+    strokeWeight(2);
+    stroke(255, 0, 0);
+    if (overButton(i)) {
+      fill(200,98);
+    }
+    else {
+      fill(200); // if not, fill gray
+    }
   }
   else
   {
+    noStroke();
     // if we are hovering
-    if (overButton(i))
+    if (overButton(i)) {
       fill(200,98);
-    else
+    }
+    else {
       fill(200); // if not, fill gray
+    }
   }
   
   rect(bounds.x, bounds.y, bounds.width, bounds.height); //draw button
