@@ -144,6 +144,11 @@ void drawButton(int i)
       fill(0, 255, 255, 98);
     else
       fill(0, 255, 255); // if so, fill cyan
+  } else if (trialNum < trials.size()- 1 && trials.get(trialNum + 1) == i) {
+    if (overButton(i))
+      fill(0, 0, 0, 98);
+    else
+      fill(0, 0, 0); // if so, fill cyan 
   }
   else
   {
